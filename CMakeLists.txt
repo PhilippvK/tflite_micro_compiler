@@ -19,6 +19,7 @@ IF(NOT GET_TF_SRC)
         ${TF_DIR}
         ${TFLMD_SRC}/flatbuffers/include
         ${TFLMD_SRC}/ruy
+        ${TFLMD_SRC}/neon_2_sse
         )
     ELSE()
         MESSAGE(FATAL_ERROR "\
