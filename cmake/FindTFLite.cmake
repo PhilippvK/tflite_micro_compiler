@@ -92,6 +92,10 @@ IF(EXISTS ${TFLD_SRC}/flatbuffers/include)
     LIST(APPEND TFL_INC_DIRS ${TFLD_SRC}/flatbuffers/include)
 ENDIF()
 
+IF(EXISTS ${TFLD_SRC}/neon_2_sse)
+    LIST(APPEND TFL_INC_DIRS ${TFLD_SRC}/neon_2_sse)
+ENDIF()
+
 IF(EXISTS ${TFLD_SRC}/gemmlowp)
     LIST(APPEND ${TFLD_SRC}/gemmlowp)
 ENDIF()

@@ -16,9 +16,10 @@ IF(NOT GET_TF_SRC)
         SET(TFLM_SRC ${TFL_SRC}/micro)
         SET(TFLMD_SRC ${TFLM_SRC}/tools/make/downloads)
         SET(TF_INCS
-            ${TF_ABSPATH}
-            ${TFLMD_SRC}/flatbuffers/include
-            ${TFLMD_SRC}/ruy
+        ${TF_DIR}
+        ${TFLMD_SRC}/flatbuffers/include
+        ${TFLMD_SRC}/ruy
+        ${TFLMD_SRC}/neon_2_sse
         )
         IF(WIN32)
             SET(TF_LIB ${TFLM_SRC}/tools/make/gen/windows_x86_64/lib/libtensorflow-microlite.a)
