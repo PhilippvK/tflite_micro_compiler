@@ -28,8 +28,7 @@ static TfLiteStatus LoggingRequestScratchBufferInArena(TfLiteContext *ctx,
                                                        size_t bytes,
                                                        int *buffer_idx) {
   assert(false && "Not handling scratch buffers currently");
-  return g_allocator->RequestScratchBufferInArena(g_currentNodeIndex, bytes,
-                                                  buffer_idx);
+  return g_allocator->RequestScratchBufferInArena(bytes, buffer_idx);
 }
 
 std::vector<tflmc::Allocation> tflmc::RecordAllocations(
@@ -49,8 +48,9 @@ std::vector<tflmc::Allocation> tflmc::RecordAllocations(
 
   tflite::NodeAndRegistration *nodeAndRegs;
   TfLiteEvalTensor *eval_tensors=nullptr;
+  tflite::ScratchBufferHandle* scratch_buffer_handles = nullptr;
   allocator->StartModelAllocation(model, resolver, &nodeAndRegs, &eval_tensors);
-  allocator->FinishModelAllocation(model, eval_tensors);
+  allocator->FinishModelAllocation(model, eval_tensors, &scratch_buffer_handles);
 
   g_allocator = allocator;
   ctx->AllocatePersistentBuffer = &LoggingAllocatePersistentBuffer;

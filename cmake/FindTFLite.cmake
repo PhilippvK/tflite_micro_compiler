@@ -130,12 +130,17 @@ FILE(GLOB TFL_MEM_PLANNER_SRCS
     ${TFLM_SRC}/memory_planner/*.cc
     )
 
+  FILE(GLOB TFL_SCHEMA_SRCS
+    ${TFLM_SRC}/schema/*.cc
+    )
+
 SET(TFL_SRCS 
     ${TFL_ROOT_SRCS}
     ${TFL_KERNELS_SRCS}
     ${TFL_CORE_API_SRCS}
     ${TFL_C_SRCS}
     ${TFL_MEM_PLANNER_SRCS}
+    ${TFL_SCHEMA_SRCS}
     )
 
 LIST(FILTER TFL_SRCS EXCLUDE REGEX "([a-z0-9_]+_test.cc)$")
