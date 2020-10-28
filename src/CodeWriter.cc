@@ -130,6 +130,11 @@ void tflmc::CodeWriter::writeBuiltin(tflite::BuiltinOperator op,
           (TfLiteConcatenationParams const*)data;
       out_ << p->axis << ", " << to_string(p->activation) << " };";
     } break;
+    case tflite::BuiltinOperator_MEAN: {
+      out_ << "TfLiteReducerParams " << name << " = { ";
+      TfLiteReducerParams const* p = (TfLiteReducerParams const*)data;
+      out_ << p->keep_dims << " };";
+    } break;
     default: {
       size_t datalen = GetBuiltinDataSize(op, subgraph_);
       uint32_t alignment = datalen >= 4 ? 4 : datalen >= 2 ? 2 : 1;
